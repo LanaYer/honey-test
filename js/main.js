@@ -7,7 +7,7 @@ function addComment () {
 
     if (!(email.includes('@')&& email.includes('.'))){
         valid = false;
-        alert('Проверьте корректность заполнения ввода e-mail!');
+        alert('Проверьте корректность заполнения поля e-mail!');
     }
 
     if (!(email&&name&&text)){
