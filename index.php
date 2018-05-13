@@ -33,8 +33,7 @@ $comments = getComments();
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
 
 	<title>Honey hunters - test</title>
 </head>
@@ -43,7 +42,7 @@ $comments = getComments();
         <div class="container">
             <div class="row">
                 <div class="header-logo">
-                    <img src="images/logo.png">
+                    <a href="/"><img src="images/logo.png"></a>
                 </div>
             </div>
         </div>
@@ -52,10 +51,12 @@ $comments = getComments();
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="images/contact-Icon.png">
+                    <div class="mail-image">
+                        <img src="images/contact-Icon.png">
+                    </div>
                 </div>
-
-                    <div class="row">
+                <div class="row comment-form">
+                    <div class="col-md-12">
                         <div class="col-md-6">
                             <label for="validationServer01">Имя <span>*</span></label>
                             <input type="text" class="form-control is-valid" id="formName" required>
@@ -67,26 +68,34 @@ $comments = getComments();
                             <textarea type="text" class="form-control is-valid" id="formText" required></textarea>
                         </div>
                     </div>
-                    <div class="row text-right">
+                    <div class="col-md-12 text-right">
                         <button class="btn btn-primary" onclick='addComment()'>Записать</button>
                     </div>
-
+                </div>
             </div>
         </div>
     </section>
     <section class="comments">
         <div class="container">
-        <h2>Выводим комментарии</h2>
+        <h2 class="text-center">Выводим комментарии</h2>
         <?php
+        $i = 0;
         while($row=mysqli_fetch_array($comments))
         {
-            echo "<div class='col-md-4'>";
-            echo "<div class='comment'>";
+            echo "<div class='col-md-4 text-center'>";
+            if ($i%2 == 0){
+                echo "<div class='comment'>";
+            }
+            else{
+                echo "<div class='comment comment-two'>";
+            }
             echo "<div class='comment-header'>".$row['name']."</div>";
             echo "<p class='comment-email'>".$row['email']."</p>";
-            echo "<p>".$row['comment']."</p>";
+            echo "<p  class='comment-text'>".$row['comment']."</p>";
             echo "</div>";
             echo "</div>";
+
+            $i++;
         }
         ?>
         </div>
@@ -95,14 +104,14 @@ $comments = getComments();
         <div class="container">
             <div class="col-md-6">
                 <div class="footer-logo">
-                    <img src="images/logo.png">
+                    <a href="/"><img src="images/logo.png"></a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-right">
                 <div class="footer-social">
                     <ul>
-                        <li><i class="fa fa-vk"></i></li>
-                        <li><i class="fa fa-facebook"></i></li>
+                        <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     </ul>
                 </div>
             </div>
